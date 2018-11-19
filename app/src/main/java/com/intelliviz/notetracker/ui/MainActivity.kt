@@ -8,7 +8,12 @@ import android.view.MenuItem
 import com.intelliviz.notetracker.R
 import kotlinx.android.synthetic.main.activity_main.*
 
+const val EXTRA_TITLE: String = "title"
+
 class MainActivity : AppCompatActivity() {
+    private var DEFAULT_TITLE = "Untitled.txt"
+    private val mNoteTitle: String = DEFAULT_TITLE;
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -18,6 +23,7 @@ class MainActivity : AppCompatActivity() {
         fab.setOnClickListener { view ->
             // val is constant variable that is immutable
             val intent = Intent(this, EditNoteActivity::class.java)
+            intent.putExtra(EXTRA_TITLE, mNoteTitle)
             startActivity(intent)
 //            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
 //                .setAction("Action", null).show()
